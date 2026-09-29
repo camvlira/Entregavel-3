@@ -6,10 +6,10 @@ API simples em **Node.js + Express** que recebe requisições **POST** com dois 
 
 ## Tecnologias
 
-- [Node.js](https://nodejs.org/)
-- [Express](https://expressjs.com/)
-- [body-parser](https://www.npmjs.com/package/body-parser)
-- [Postman](https://www.postman.com/) (para testar as requisições)
+- Node.js
+- Express
+- body-parser
+- Postman
 - Visual Studio Code
 
 ## Pré-requisitos
