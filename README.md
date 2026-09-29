@@ -4,17 +4,6 @@ API simples em **Node.js + Express** que recebe requisições **POST** com dois 
 
 > Atividade assíncrona das disciplinas **Desenvolvimento de Software em Nuvem** e **Ambientes de Desenvolvimento de Software** (UNIFOR).
 
-## Sumário
-
-- [Tecnologias](#tecnologias)
-- [Pré-requisitos](#pré-requisitos)
-- [Como criar o projeto do zero](#como-criar-o-projeto-do-zero)
-- [Como executar](#como-executar)
-- [Endpoints](#endpoints)
-- [Testes no Postman](#testes-no-postman)
-- [Código-fonte](#código-fonte)
-- [Observações](#observações)
-
 ## Tecnologias
 
 - [Node.js](https://nodejs.org/)
