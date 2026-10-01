@@ -1,186 +1,112 @@
-# Entregável 3
+# API Calculadora com Express
 
-API simples em **Node.js + Express** que recebe requisições **POST** com dois números e devolve o resultado de uma operação matemática (soma, subtração, divisão e multiplicação). Os testes foram feitos com o **Postman**.
+API simples feita com **Node.js** e **Express** que realiza as quatro operações matemáticas básicas (soma, subtração, divisão e multiplicação) através de requisições **POST**.
 
-> Atividade assíncrona das disciplinas **Desenvolvimento de Software em Nuvem** e **Ambientes de Desenvolvimento de Software** (UNIFOR).
+O objetivo do projeto é praticar a criação de rotas POST, a leitura de dados enviados no corpo da requisição (`req.body`) e o teste da API com o **Postman**.
 
 ## Tecnologias
 
-- Node.js
-- Express
-- body-parser
-- Postman
-- Visual Studio Code
+- [Node.js](https://nodejs.org/)
+- [Express](https://expressjs.com/)
+- [body-parser](https://www.npmjs.com/package/body-parser)
+- [Postman](https://www.postman.com/) (para testar as requisições)
 
 ## Pré-requisitos
 
-- Node.js e npm instalados
-- Postman (ou outra ferramenta para requisições HTTP)
-
-## Como criar o projeto do zero
-
-1. Crie uma pasta chamada `site-soma` e abra-a no Visual Studio Code (**Arquivo > Abrir pasta**).
-2. No terminal do VS Code, crie um novo projeto NPM:
-
+1. **Node.js** instalado. Baixe a versão LTS em [nodejs.org](https://nodejs.org/) e instale normalmente.
+   Para conferir se deu certo, rode no terminal:
    ```bash
-   npm init -y
+   node -v
+   npm -v
    ```
+2. **Postman** para testar a API. Você pode instalar a extensão **Postman** direto no VS Code (aba de extensões) ou usar o aplicativo.
 
-3. Instale o Express:
+## Instalação
 
+1. Clone o repositório (ou baixe o ZIP e extraia):
+   ```bash
+   git clone <URL-DO-SEU-REPOSITORIO>
+   ```
+2. Entre na pasta do projeto:
+   ```bash
+   cd <NOME-DA-PASTA>
+   ```
+3. Instale as dependências:
    ```bash
    npm install express
-   ```
-
-4. Instale o body-parser, biblioteca que ajuda a ler os dados enviados via POST:
-
-   ```bash
    npm install body-parser
    ```
 
-5. Crie o arquivo `app.js` e cole o [código-fonte](#código-fonte) abaixo.
+> Se o repositório já tiver o `package.json`, basta rodar `npm install`.
 
 ## Como executar
 
-Na pasta do projeto, execute:
+No terminal, dentro da pasta do projeto:
 
 ```bash
 node app.js
 ```
 
-Se tudo der certo, o terminal exibirá:
+Se tudo deu certo, aparecerá a mensagem:
 
 ```
-App de Exemplo escutando na porta http://localhost:3001/
+App de Exemplo escutando na porta http://localhost:3000/
 ```
 
-Depois, acesse [http://localhost:3001](http://localhost:3001) no navegador ou no Postman.
+Deixe o terminal aberto: o servidor precisa continuar rodando para receber as requisições.
 
-## Endpoints
+> Se você alterar o código, pare o servidor com `Ctrl + C` e rode `node app.js` novamente.
 
-| Método | Rota             | Descrição                     | Corpo (JSON)             |
-| ------ | ---------------- | ----------------------------- | ------------------------ |
-| GET    | `/`              | Mensagem de boas-vindas       | —                        |
-| POST   | `/soma`          | Soma `a + b`                  | `{ "a": 10, "b": 5 }`    |
-| POST   | `/subtracao`     | Subtrai `a - b`               | `{ "a": 10, "b": 5 }`    |
-| POST   | `/divisao`       | Divide `a / b`                | `{ "a": 10, "b": 5 }`    |
-| POST   | `/multiplicacao` | Multiplica `a * b`            | `{ "a": 10, "b": 5 }`    |
+## Testando no navegador
 
-Todas as rotas POST retornam um texto no formato:
+Abra [http://localhost:3000](http://localhost:3000). Deve aparecer:
 
 ```
-O resultado da <operação> de <a> e <b> é <resultado>
+Oi, mundo.
 ```
 
-## Testes no Postman
+Essa é a rota `GET /`, só para confirmar que o servidor está funcionando.
 
-Para as rotas POST, configure a requisição em **Body > raw > JSON** e envie o seguinte corpo:
+## Testando no Postman
+
+As operações são rotas **POST**, então não funcionam digitando a URL no navegador. Use o Postman:
+
+1. Crie uma nova requisição (**New HTTP Request**).
+2. Escolha o método **POST**.
+3. Digite a URL da operação desejada, por exemplo `http://localhost:3000/soma`.
+4. Abra a aba **Body**, marque **raw** e, no menu ao lado, escolha **JSON** (não deixe em *Text*).
+5. Cole o JSON abaixo:
+   ```json
+   { "a": 7, "b": 3 }
+   ```
+6. Clique em **Send**.
+
+## Rotas disponíveis
+
+| Método | Rota             | Descrição     | Resposta para `{ "a": 7, "b": 3 }`                     |
+| ------ | ---------------- | ------------- | ------------------------------------------------------ |
+| GET    | `/`              | Teste do site | `Oi, mundo.`                                           |
+| POST   | `/soma`          | Soma          | `O resultado da soma de 7 e 3 é 10`                     |
+| POST   | `/subtracao`     | Subtração     | `O resultado da subtração de 7 e 3 é 4`               |
+| POST   | `/divisao`       | Divisão       | `O resultado da divisão de 7 e 3 é 2.333333333333333` |
+| POST   | `/multiplicacao` | Multiplicação | `O resultado da multiplicação de 7 e 3 é 21`            |
+
+### Formato do corpo (body)
+
+Todas as rotas POST esperam um JSON com dois números:
 
 ```json
 {
-  "a": 10,
-  "b": 5
+  "a": 7,
+  "b": 3
 }
 ```
 
-### 1. GET `/`
+## Estrutura do projeto
 
-Verifica se o servidor está no ar. Retorna `Oi, mundo :-)`.
-
-(print)
-
-### 2. POST `/soma`
-
-Resultado esperado: `O resultado da soma de 10 e 5 é 15`
-
-(print)
-
-### 3. POST `/subtracao`
-
-Resultado esperado: `O resultado da subtração de 10 e 5 é 5`
-
-(print)
-
-### 4. POST `/divisao`
-
-Resultado esperado: `O resultado da divisão de 10 e 5 é 2`
-
-(print)
-
-### 5. POST `/multiplicacao`
-
-Resultado esperado: `O resultado da multiplicação de 10 e 5 é 50`
-
-(print)
-
-## Código-fonte
-
-`app.js`:
-
-```javascript
-var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
-app.use(bodyParser.json());
-
-function soma(a, b) {
-  return a + b;
-}
-
-function subtracao(a, b) {
-  return a - b;
-}
-
-function divisao(a, b) {
-  return a / b;
-}
-
-function multiplicacao(a, b) {
-  return a * b;
-}
-
-app.get('/', function(req, res) {
-  res.send('Oi, mundo :-)');
-});
-
-app.post('/soma', function (req, res) {
-  var body = req.body;
-  var resultado = soma(body.a, body.b);
-
-  res.send(`O resultado da soma de ${body.a} e ${body.b} é ${resultado}`);
-});
-
-app.post('/subtracao', function (req, res) {
-  var body = req.body;
-  var resultado = subtracao(body.a, body.b);
-
-  res.send(`O resultado da subtração de ${body.a} e ${body.b} é ${resultado}`);
-});
-
-app.post('/divisao', function (req, res) {
-  var body = req.body;
-  var resultado = divisao(body.a, body.b);
-
-  res.send(`O resultado da divisão de ${body.a} e ${body.b} é ${resultado}`);
-});
-
-app.post('/multiplicacao', function (req, res) {
-  var body = req.body;
-  var resultado = multiplicacao(body.a, body.b);
-
-  res.send(`O resultado da multiplicação de ${body.a} e ${body.b} é ${resultado}`);
-});
-
-var port = 3001;
-
-// iniciando o processo do servidor
-app.listen(port, function() {
-  console.log(`App de Exemplo escutando na porta http://localhost:${port}/`);
-});
 ```
-
-## Observações
-
-- Os valores `a` e `b` devem ser enviados como **números** no JSON (ex.: `10`, e não `"10"`). Se forem strings, o operador `+` faz concatenação em vez de soma.
-- Na divisão, o código não trata `b = 0`; nesse caso o JavaScript retorna `Infinity`. Uma melhoria possível é validar o divisor e retornar um erro (por exemplo, status `400`).
-- A resposta é enviada como texto (`res.send`), por isso o Postman a exibe no formato HTML.
+.
+├── app.js          # servidor e rotas
+├── package.json
+└── README.md
+```
