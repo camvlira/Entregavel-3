@@ -111,15 +111,15 @@ Todas as rotas POST esperam um JSON com dois números:
 └── README.md
 ```
 
-##GET
+## GET
 <img width="261" height="106" alt="image" src="https://github.com/user-attachments/assets/b8d6fb95-3b68-4727-96f9-0736bba1dcab" />
 
-##POSTS
-#SOMA
+## POSTS
+# SOMA
 <img width="999" height="470" alt="image" src="https://github.com/user-attachments/assets/7447e319-ad15-4510-887c-2e11912488a0" />
-#SUBTRAÇÃO
+# SUBTRAÇÃO
 <img width="1015" height="489" alt="image" src="https://github.com/user-attachments/assets/665c1e65-47fa-4c1b-9c55-6277bea0aa84" />
-#MULTIPLICAÇÃO
+# MULTIPLICAÇÃO
 <img width="1012" height="465" alt="image" src="https://github.com/user-attachments/assets/83123fd1-2199-4550-858f-ecec1caef108" />
-#DIVISÃO
+# DIVISÃO
 <img width="998" height="466" alt="image" src="https://github.com/user-attachments/assets/3d27e996-2e17-4955-9bea-aca8df578b75" />
