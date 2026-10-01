@@ -20,40 +20,40 @@ function multiplicacao(a, b) {
 }
 
 app.get('/', function(req, res) {
-  res.send('Oi, mundo :-)');
+  res.send('Oi, mundo.');
 });
 
 app.post('/soma', function (req, res) {
-var body = req.body;
-var resultado = soma(body.a, body.b);
+  var body = req.body;
+  var resultado = soma(body.a, body.b);
 
-res.send(`O resultado da soma de ${body.a} e ${body.b} é ${resultado}`);
+  res.send(`O resultado da soma de ${body.a} e ${body.b} é ${resultado}`);
 });
 
 app.post('/subtracao', function (req, res) {
-var body = req.body;
-var resultado = subtracao(body.a, body.b);
+  var body = req.body;
+  var resultado = subtracao(body.a, body.b);
 
-res.send(`O resultado da subtração de ${body.a} e ${body.b} é ${resultado}`);
-});
-
-app.post('/divisao', function (req, res) {
-var body = req.body;
-var resultado = divisao(body.a, body.b);
-
-res.send(`O resultado da divisão de ${body.a} e ${body.b} é ${resultado}`);
+  res.send(`O resultado da subtração de ${body.a} e ${body.b} é ${resultado}`);
 });
 
 app.post('/multiplicacao', function (req, res) {
-var body = req.body;
-var resultado = multiplicacao(body.a, body.b);
+  var body = req.body;
+  var resultado = multiplicacao(body.a, body.b);
 
-res.send(`O resultado da multiplicação de ${body.a} e ${body.b} é ${resultado}`);
+  res.send(`O resultado da multiplicação de ${body.a} e ${body.b} é ${resultado}`);
 });
 
-var port = 3001;
+app.post('/divisao', function (req, res) {
+  var body = req.body;
+  var resultado = divisao(body.a, body.b);
 
-// iniciando o processo do servidor
+  res.send(`O resultado da divisão de ${body.a} e ${body.b} é ${resultado}`);
+});
+
+var port = 3000;
+
+
 app.listen(port, function() {
   console.log(`App de Exemplo escutando na porta http://localhost:${port}/`);
 });
